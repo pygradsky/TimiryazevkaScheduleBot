@@ -2,17 +2,10 @@ import asyncio
 import logging
 import os
 
-from aiogram import Bot, Dispatcher, Router
-from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 
-router = Router()
-
-
-@router.message(CommandStart())
-async def handle_start(message: Message) -> None:
-    await message.answer("✅ Бот запущен и готов работать.")
+from src.bot.handlers import __all_routers__
 
 
 async def main() -> None:
@@ -24,7 +17,9 @@ async def main() -> None:
 
     bot = Bot(token=token)
     dp = Dispatcher()
-    dp.include_router(router)
+
+    for router in __all_routers__:
+        dp.include_router(router)
 
     await dp.start_polling(bot)
 
