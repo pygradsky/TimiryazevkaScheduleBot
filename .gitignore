@@ -1,0 +1,42 @@
+data/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+
+# Logs and runtime artifacts
+*.log
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# IDE and editor settings
+.idea/
+.vscode/
+
+# Environment and secrets
+.env
+.env.*
+*.env
+.envrc
+
+# OS-specific files
+.DS_Store
+Thumbs.db
