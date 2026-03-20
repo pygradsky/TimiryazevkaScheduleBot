@@ -29,8 +29,10 @@ async def _create_table() -> None:
             join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
             )"""
         )
+        await conn.commit()
 
 
 async def setup() -> None:
     await _create_dirs()
     await _create_table()
+    
