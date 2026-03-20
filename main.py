@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 from src.utils.setup import setup
 from src.db.db_operations import close_db
-from src.bot.handlers import __all_routers__
+from src.handlers import __all_routers__
 
 
 async def main() -> None:
