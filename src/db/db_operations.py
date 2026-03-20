@@ -19,8 +19,6 @@ async def create_table() -> None:
         """CREATE TABLE IF NOT EXISTS users (
         user_id INTEGER PRIMARY KEY,
         username TEXT NOT NULL,
-        group_id INTEGER NOT NULL,
-        faculty TEXT NOT NULL,
         join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
         )
         """
@@ -30,8 +28,8 @@ async def create_table() -> None:
 
 async def save_user_info(user_id: int, username: str) -> None:
     await db.execute(
-        "INSERT OR IGNORE INTO users (user_id, username, group_id, faculty) VALUES (?, ?, ?, ?)",
-        (user_id, username, 0, '')
+        "INSERT OR IGNORE INTO users (user_id, username) VALUES (?, ?)",
+        (user_id, username)
     )
     await db.commit()
 
@@ -48,9 +46,9 @@ async def get_user_info(user_id: int) -> dict | None:
     return None
 
 
-async def update_user_info(user_id: int, new_group_id: int, new_faculty: str) -> None:
+async def update_user_info(user_id: int, new_course:int, new_group_id: int, new_faculty: str) -> None:
     await db.execute(
-        "UPDATE users SET group_id = ?, faculty = ? WHERE user_id = ?",
-        (new_group_id, new_faculty, user_id)
+        "UPDATE users SET course = ?, group_id = ?, faculty = ? WHERE user_id = ?",
+        (new_course, new_group_id, new_faculty, user_id)
     )
     await db.commit()
