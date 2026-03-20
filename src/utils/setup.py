@@ -26,9 +26,11 @@ async def _create_table() -> None:
             username TEXT NOT NULL,
             group_id INTEGER NOT NULL,
             faculty TEXT NOT NULL,
-            join_date DEFAULT CURRENT_TIMESTAMP NOT NULL
+            join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
             )"""
         )
+
+        await conn.commit()
 
 
 async def setup() -> None:
