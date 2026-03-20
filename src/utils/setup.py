@@ -1,7 +1,7 @@
 import os
-import aiosqlite
 
 from src.configs.config import DataConfig
+from src.db.db_operations import create_table
 
 data_config = DataConfig()
 
@@ -13,26 +13,11 @@ dirs_to_create = [
 ]
 
 
-async def _create_dirs() -> None:
+async def create_dirs() -> None:
     for d in dirs_to_create:
         os.makedirs(d, exist_ok=True)
 
 
-async def _create_table() -> None:
-    async with aiosqlite.connect(db_file) as conn:
-        await conn.execute(
-            """CREATE TABLE IF NOT EXISTS users (
-            user_id INTEGER PRIMARY KEY,
-            username TEXT NOT NULL,
-            group_id INTEGER NOT NULL,
-            faculty TEXT NOT NULL,
-            join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
-            )"""
-        )
-        await conn.commit()
-
-
 async def setup() -> None:
-    await _create_dirs()
-    await _create_table()
-    
+    await create_dirs()
+    await create_table()
