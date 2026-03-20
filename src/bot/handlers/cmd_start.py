@@ -10,4 +10,5 @@ router = Router()
 @router.message(CommandStart())
 async def handle_start(message: Message) -> None:
     await message.answer(
-bot_messages['/start'])
+        bot_messages['/start']
+    )
