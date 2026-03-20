@@ -12,7 +12,6 @@ async def handle_start(message: types.Message) -> None:
     await message.answer(
         "Привет! 👋\n\n"
         "📌 Основные команды:\n"
-        "/help - инструкция\n"
-        "/clock - получить расписание\n"
-        "/register - зарегистрироваться"
+        "/start - перезапустить бота\n"
+        "/schedule - получить расписание"
     )
