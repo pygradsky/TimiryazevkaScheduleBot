@@ -1,5 +1,7 @@
-from .cmd_start import router as cmd_start_router
+from .start_cmd import router as start_cmd_router
+from .clock_cmd import router as clock_cmd_router
 
 __all_routers__ = [
-    cmd_start_router,
+    start_cmd_router,
+    clock_cmd_router,
 ]
